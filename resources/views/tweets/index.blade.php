@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
+@include('header')
+
 <body>
     <h1>つぶやきアプリ</h1>
     <div>
@@ -22,7 +16,12 @@
     </div>
     <div>
         @foreach ($tweets as $tweet)
-            <p>{{ $tweet->content }}</p>
+            <details>
+                <summary>{{ $tweet->content }}</summary>
+                <div>
+                    <a href="{{ route('tweets.update.index', ['tweetId' => $tweet->id]) }}">編集</a>
+                </div>
+            </details>
         @endforeach
     </div>
 </body>
