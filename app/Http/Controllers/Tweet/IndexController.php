@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Tweet;
 
 use App\Http\Controllers\Controller;
 use App\Models\Tweet;
 use Illuminate\Http\Request;
 
-class TweetIndexController extends Controller
+class IndexController extends Controller
 {
     public function index() {
-        $tweets = Tweet::all();
+        $tweets = Tweet::orderBy('created_at', 'desc')->get();
         // dd($tweets);
         return view('tweets.index')->with('tweets', $tweets);
     }
